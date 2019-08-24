@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Route, Router, Switch} from "react-router";
+import Step1Page from "./pages/Step1Page";
+import Step2Page from "./pages/Step2Page";
+import Step3Page from "./pages/Step3Page";
+import {createBrowserHistory} from "history"
+
+const history = createBrowserHistory()
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={history}>
+      <Switch>
+        <Route exact path={"/2"} component={Step2Page}/>
+        <Route exact path={"/3"} component={Step3Page}/>
+        <Route path={"/"} component={Step1Page}/>
+      </Switch>
+    </Router>
   );
 }
 
